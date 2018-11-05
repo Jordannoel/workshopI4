@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwwthymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
+    <title>Connexion</title>
+</head>
+
+<body class="text-center">
+<div class="container">
+    <a th:href="@{/login}">
+        <img src="images/logo.png" alt="Logo" width="150px">
+    </a>
+    <div class="container signin rounded shadow-lg p-4 mb-4">
+        <form class="form-signin" method="post" accept-charset="utf-8" autocomplete="off">
+            <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+            <div>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur" required autofocus>
+            </div>
+            <div>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Mot de passe" required>
+            </div>
+            <div class="error-message">
+                <span th:if="${errors != null}" th:text="${errors.get('login-error')}"></span>
+            </div>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>
+            <br/>
+        </form>
+    </div>
+</div>
+</body>
+</html>
