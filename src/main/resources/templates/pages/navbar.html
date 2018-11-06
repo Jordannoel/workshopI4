@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<div th:fragment="navbar">
+    <div style="position: absolute; width: 100%;">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse" id="container">
+                <div>
+                    <a class="navbar-brand" th:href="@{/index}">Index</a>
+                </div>
+                <div>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">1er lien</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">
+                                2eme lien <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown_target">
+                                <a class="dropdown-item" href="#"> Sous lien 1</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"> Sous lien 2</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdown_target" href="#">
+                                3eme lien <span class="caret"></span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown_target">
+                                <a class="dropdown-item" href="#"> Sous lien 1</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"> Sous lien 2</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"> Sous lien 3</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"> Sous lien 4</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#"> Sous lien 5</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-nav" style="margin-right: 15px">
+                    <a th:href="@{/deconnexion}">
+                        <img th:src="@{/images/powerButton.png}" id="onOff" width="24"/>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

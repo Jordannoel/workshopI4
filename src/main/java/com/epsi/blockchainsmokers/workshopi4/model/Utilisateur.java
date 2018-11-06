@@ -14,12 +14,17 @@ public class Utilisateur {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
+
+    private String email;
 
     private String username;
 
     private String password;
 
+    public Utilisateur(String email, String username, String password) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+    }
 }
-
-
