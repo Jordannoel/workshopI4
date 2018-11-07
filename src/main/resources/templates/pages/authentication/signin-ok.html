@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/navbar.css}">
+</head>
+<body>
+
+<div th:insert="pages/navbar :: navbar"></div>
+
+<br>
+<br>
+<br>
+
+<p>Vous avez bien été inscrit à l'adresse mail <span th:text="${email}"></span>.</p>
+
+<a th:href="@{/index}">Retour au site</a>
+
+
+</body>
+</html>
