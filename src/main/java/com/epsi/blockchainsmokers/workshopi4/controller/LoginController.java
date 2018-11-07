@@ -101,7 +101,7 @@ public class LoginController {
 
     /***********************************************DECONNEXION***************************************************/
 
-    @RequestMapping(value = ApplicationUrl.LOGOUT, method = RequestMethod.POST)
+    @RequestMapping(value = ApplicationUrl.LOGOUT, method = RequestMethod.GET)
     public String deconnexionPost(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.invalidate();
