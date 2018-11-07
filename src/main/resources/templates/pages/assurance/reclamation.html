@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/navbar.css}">
+
+    <meta charset="UTF-8">
+    <title>Reclamation</title>
+</head>
+<body>
+
+<div th:insert="pages/navbar :: navbar"></div>
+
+<br>
+<br>
+<br>
+<a class="button" th:href="@{/login}"> Connexion </a>
+<br>
+<a class="button" th:href="@{/signin}"> Inscription </a>
+
+<form class="form-reclamation" method="post" accept-charset="utf-8">
+    <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal"> Réclamation remboursement </h1>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1"> Billet à assurer : </label>
+        <select class="form-control" id="exampleFormControlSelect1">
+            <option>ZE9794226</option>
+            <option>PO0321148</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect2"> Motif réclamation </label>
+        <select class="form-control" id="exampleFormControlSelect2">
+            <option>Transport</option>
+            <option>Maladie</option>
+        </select>
+    </div>
+    <div class="input-group input-file" name="Fichier1">
+			<span class="input-gropu-btn">
+        		<div>
+                    <label for="avatar">Justificatif :</label>
+                    <input type="file"
+                           id="avatar" name="avatar"
+                           accept="image/png, image/jpeg" />
+                </div>
+            </span>
+    </div>
+
+    <div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Soumettre</button>
+    </div>
+</form>
+
+</body>
+</html>
