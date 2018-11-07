@@ -21,13 +21,13 @@ public class LoginController {
     private ConnexionService connexionService;
     private InscriptionService inscriptionService;
 
+    private static final String REDIRECT = "redirect:";
+
     @Autowired
     public LoginController(ConnexionService connexionService, InscriptionService inscriptionService) {
         this.connexionService = connexionService;
         this.inscriptionService = inscriptionService;
     }
-
-    private static final String REDIRECT = "redirect:";
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() {
@@ -46,16 +46,14 @@ public class LoginController {
 
     @RequestMapping(value = ApplicationUrl.SIGNIN, method = RequestMethod.POST)
     public String inscriptionPost(HttpServletRequest req, ModelMap modelMap) {
-        String username = req.getParameter("username");
         String email = req.getParameter("email");
         String motDePasse = req.getParameter("motDePasse");
         String confirmationMotDePasse = req.getParameter("confirmationMotDePasse");
         boolean approbation = Boolean.valueOf(req.getParameter("approbation"));
         try {
-            inscriptionService.inscrireUtilisateur(username, email, motDePasse, confirmationMotDePasse, approbation);
+            inscriptionService.inscrireUtilisateur(email, motDePasse, confirmationMotDePasse, approbation);
             Utilisateur utilisateur = connexionService.connecterUtilisateur(email, motDePasse);
             HttpSession session = req.getSession();
-            session.setAttribute("username", utilisateur.getUsername());
             session.setAttribute("email", utilisateur.getEmail());
             session.setAttribute("id", utilisateur.getId());
             return REDIRECT + ApplicationUrl.SIGNIN_OK;
@@ -68,7 +66,6 @@ public class LoginController {
     @RequestMapping(value = ApplicationUrl.SIGNIN_OK, method = RequestMethod.GET)
     public String inscriptionValidee(HttpServletRequest req, ModelMap modelMap) {
         HttpSession session = req.getSession();
-        modelMap.put("username", session.getAttribute("username"));
         modelMap.put("email", session.getAttribute("email"));
         return PageMapping.SIGNIN_OK;
     }

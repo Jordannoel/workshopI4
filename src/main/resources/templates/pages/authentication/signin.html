@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://wwwthymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
+    <link href="signin.css" rel="stylesheet">
+    <title>Inscription</title>
 
+    <style type="text/css">
+        form > div {
+            padding: .5em;
+        }
+        div > label:first-child {
+            display: inline-block;
+            min-width: 18em;
+        }
+        .error-message {
+            color: red;
+        }
+    </style>
+</head>
+<body class="text-center">
+<div class="container"  style="background:#f8f9fa">
+
+    <form class="form-signin"  method="post" accept-charset="utf-8">
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal" > Inscription </h1>
+        <div >
+            <input  id="email" class="form-control" placeholder="Email "  name="email" type="text" value=''>
+            <span class="error-message" th:if="${errors != null}" th:text="${errors.get('email')}"></span>
+        </div>
+        <div>
+            <input id="motDePasse" class="form-control" placeholder="Mot de passe "    name="motDePasse" type="password">
+            <span class="error-message" th:if="${errors != null}" th:text="${errors.get('motDePasse')}"></span>
+        </div>
+        <div>
+            <input id="confirmationMotDePasse" class="form-control" placeholder="Confirmation du mot de passe"   name="confirmationMotDePasse" type="password">
+            <span class="error-message" th:if="${errors != null}" th:text="${errors.get('confirmationMotDePasse')}"></span>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+                <input   id="approbation" class="form-check-input"  name="approbation" value="true" type="checkbox">
+                J'ai lu et approuvé les conditions générales de ce site
+                <span class="error-message" th:if="${errors != null}" th:text="${errors.get('approbation')}"></span>
+
+            </label>
+        </div>
+
+        <div>
+            <button  class="btn btn-lg btn-primary btn-block" type="submit">S'inscrire</button>
+        </div>
+    </form>
+
+    <div>
+        <a th:href="@{/index}"> Retour à l'accueil</a>
+    </div>
+</div>
 </body>
 </html>

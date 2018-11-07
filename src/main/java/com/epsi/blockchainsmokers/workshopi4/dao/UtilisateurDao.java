@@ -11,8 +11,6 @@ import java.util.List;
 @Repository
 public interface UtilisateurDao extends JpaRepository<Utilisateur, Long> {
 
-    int countByUsername(String username);
-
     int countByEmail(String email);
 
     List<Utilisateur> findByEmail(String email);
