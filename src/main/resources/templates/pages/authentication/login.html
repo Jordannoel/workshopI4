@@ -24,7 +24,7 @@
             <div class="error-message">
                 <span th:if="${errors != null}" th:text="${errors.get('login-error')}"></span>
             </div>
-            <button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>
+                <a class="btn btn-lg btn-success btn-block" th:href="@{/login}">Valider</a>
             <br/>
         </form>
     </div>

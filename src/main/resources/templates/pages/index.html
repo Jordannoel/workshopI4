@@ -8,10 +8,33 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
 
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
+
+<body class="text-center">
+<div th:insert="pages/navbar :: navbar"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="choice">
+    <div class="container rounded shadow-lg p-4 mb-4">
+        <div>
+            <a class="btn btn-lg btn-success btn-block" th:href="@{/login}"> Connexion </a>
+        </div>
+        <br>
+        <div>
+            <a class="btn btn-lg btn-success btn-block" th:href="@{/signin}"> S'inscrire </a>
+        </div>
+    </div>
+</div>
+</body>
+
+<!--
 <body>
 
 <div th:insert="pages/navbar :: navbar"></div>
@@ -19,9 +42,14 @@
 <br>
 <br>
 <br>
-<!--
-<a class="button" th:href="@{/login}"> Connexion </a><br>
-<a class="button" th:href="@{/signin}"> S'inscrire </a>
--->
-</body>
+<div>
+    <div>
+        <a class="button" th:href="@{/login}"> Connexion </a>
+    </div>
+    <div>
+        <a class="button" th:href="@{/signin}"> S'inscrire </a>
+    </div>
+</div>
+
+</body>-->
 </html>

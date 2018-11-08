@@ -16,7 +16,7 @@ public class InscriptionServiceImpl implements InscriptionService {
         this.utilisateurDao = utilisateurDao;
     }
 
-    public void inscrireUtilisateur(String username, String email, String motDePasse, String confirmationMotDePasse, boolean approbation) throws WorkshopException {
+    public void inscrireUtilisateur(String email, String motDePasse, String confirmationMotDePasse, boolean approbation) throws WorkshopException {
 
         WorkshopException ex = new WorkshopException();
         if (email == null || email.equals("")) {
@@ -26,12 +26,6 @@ public class InscriptionServiceImpl implements InscriptionService {
         }
         if (emailDejaExistant(email)) {
             ex.addMessage("email", "Un compte est déjà associé à cette adresse e-mail");
-        }
-
-        if (username == null || username.equals("")) {
-            ex.addMessage("username", "Merci de saisir votre nom d'utilisateur.");
-        } else if (usernameDejaExistant(username)) {
-            ex.addMessage("username", "Ce nom d'utilisateur existe déjà.");
         }
 
         if (motDePasse == null || motDePasse.length() < 8) {
@@ -47,11 +41,7 @@ public class InscriptionServiceImpl implements InscriptionService {
             throw ex;
         }
 
-        utilisateurDao.save(new Utilisateur(username, email, WorkshopUtils.sha256(motDePasse)));
-    }
-
-    private boolean usernameDejaExistant(String username) {
-        return utilisateurDao.countByUsername(username) > 0;
+        utilisateurDao.save(new Utilisateur(email, WorkshopUtils.sha256(motDePasse)));
     }
 
     private boolean emailDejaExistant(String email) {

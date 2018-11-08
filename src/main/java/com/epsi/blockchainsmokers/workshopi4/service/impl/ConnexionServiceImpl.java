@@ -24,17 +24,17 @@ public class ConnexionServiceImpl implements ConnexionService {
 
         if (email != null && !email.equals("")) {
             if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-                ex.addMessage("email", "Merci de saisir une adresse e-mail valide.");
+                ex.addMessage("login-error", "Merci de saisir une adresse e-mail valide.");
             }
         } else {
-            ex.addMessage("email", "Merci de saisir votre adresse e-mail.");
+            ex.addMessage("login-error", "Merci de saisir votre adresse e-mail.");
         }
         if (motDePasse != null && !motDePasse.equals("")) {
             if (!motDePasseCorrect(email, motDePasse)) {
-                ex.addMessage("motDePasse", "Le mot de passe n'est pas correct.");
+                ex.addMessage("login-error", "Le mot de passe n'est pas correct.");
             }
         } else {
-            ex.addMessage("motDePasse", "Merci de saisir votre mot de passe.");
+            ex.addMessage("login-error", "Merci de saisir votre mot de passe.");
         }
         if (ex.mustBeThrown()) {
             throw ex;

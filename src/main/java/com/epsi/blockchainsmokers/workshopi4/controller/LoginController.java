@@ -46,16 +46,14 @@ public class LoginController {
 
     @RequestMapping(value = ApplicationUrl.SIGNIN, method = RequestMethod.POST)
     public String inscriptionPost(HttpServletRequest req, ModelMap modelMap) {
-        String username = req.getParameter("username");
         String email = req.getParameter("email");
         String motDePasse = req.getParameter("motDePasse");
         String confirmationMotDePasse = req.getParameter("confirmationMotDePasse");
         boolean approbation = Boolean.valueOf(req.getParameter("approbation"));
         try {
-            inscriptionService.inscrireUtilisateur(username, email, motDePasse, confirmationMotDePasse, approbation);
+            inscriptionService.inscrireUtilisateur(email, motDePasse, confirmationMotDePasse, approbation);
             Utilisateur utilisateur = connexionService.connecterUtilisateur(email, motDePasse);
             HttpSession session = req.getSession();
-            session.setAttribute("username", utilisateur.getUsername());
             session.setAttribute("email", utilisateur.getEmail());
             session.setAttribute("id", utilisateur.getId());
             return REDIRECT + ApplicationUrl.SIGNIN_OK;

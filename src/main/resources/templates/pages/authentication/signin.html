@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css" th:href="@{css/login.css}">
-    <title>Connexion</title>
+    <title>Inscription</title>
 </head>
 
 <body class="text-center">
@@ -27,7 +27,8 @@
             <div class="error-message">
                 <span th:if="${errors != null}" th:text="${errors.get('login-error')}"></span>
             </div>
-            <button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>
+            <!--<button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>-->
+            <a class="btn btn-lg btn-success btn-block" th:href="@{/login}"> Valider </a>
             <br/>
         </form>
     </div>

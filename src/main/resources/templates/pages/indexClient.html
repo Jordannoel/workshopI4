@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/navbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{css/index.css}">
+
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+
+<body class="text-center">
+<div th:insert="pages/navbar :: navbar"></div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="choice">
+    <div class="container rounded shadow-lg p-4 mb-4">
+        <div>
+            <a class="btn btn-lg btn-success btn-block" th:href="@{/souscription}"> Assurer son billet </a>
+        </div>
+        <br>
+        <div>
+            <a class="btn btn-lg btn-success btn-block" th:href="@{/reclamation}"> Faire une réclamation </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
