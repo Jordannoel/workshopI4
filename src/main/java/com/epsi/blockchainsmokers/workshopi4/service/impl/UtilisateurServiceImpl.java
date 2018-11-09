@@ -21,11 +21,11 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Override
     public String findMotDePasseByEmail(String email) {
-        List<Utilisateur> utilisateurs = utilisateurDao.findByEmail(email);
+        List<Utilisateur> utilisateurs = utilisateurDao.findByMail(email);
         if (utilisateurs.size() == 0) {
             return null;
         } else {
-            return utilisateurs.get(0).getPassword();
+            return utilisateurs.get(0).getMdp();
         }
     }
 
@@ -36,7 +36,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     @Override
     public Utilisateur findOneByEmail(String email) {
-        List<Utilisateur> utilisateurs = utilisateurDao.findByEmail(email);
+        List<Utilisateur> utilisateurs = utilisateurDao.findByMail(email);
         if (utilisateurs.size() == 0) {
             return null;
         } else {

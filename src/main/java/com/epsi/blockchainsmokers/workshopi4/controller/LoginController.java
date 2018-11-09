@@ -47,16 +47,15 @@ public class LoginController {
     @RequestMapping(value = ApplicationUrl.SIGNIN, method = RequestMethod.POST)
     public String inscriptionPost(HttpServletRequest req, ModelMap modelMap) {
         String email = req.getParameter("email");
-        String motDePasse = req.getParameter("motDePasse");
-        String confirmationMotDePasse = req.getParameter("confirmationMotDePasse");
-        boolean approbation = Boolean.valueOf(req.getParameter("approbation"));
+        String motDePasse = req.getParameter("password");
+        String confirmationMotDePasse = req.getParameter("repassword");
         try {
-            inscriptionService.inscrireUtilisateur(email, motDePasse, confirmationMotDePasse, approbation);
+            inscriptionService.inscrireUtilisateur(email, motDePasse, confirmationMotDePasse);
             Utilisateur utilisateur = connexionService.connecterUtilisateur(email, motDePasse);
             HttpSession session = req.getSession();
-            session.setAttribute("email", utilisateur.getEmail());
+            session.setAttribute("email", utilisateur.getMail());
             session.setAttribute("id", utilisateur.getId());
-            return REDIRECT + ApplicationUrl.SIGNIN_OK;
+            return REDIRECT + ApplicationUrl.LOGIN;
         } catch (WorkshopException e) {
             modelMap.put("errors", e.getMessages());
             return PageMapping.SIGNIN;
@@ -68,7 +67,7 @@ public class LoginController {
         HttpSession session = req.getSession();
         modelMap.put("username", session.getAttribute("username"));
         modelMap.put("email", session.getAttribute("email"));
-        return PageMapping.SIGNIN_OK;
+        return PageMapping.INDEX_CLIENT;
     }
 
     @RequestMapping(value = ApplicationUrl.LOGIN, method = RequestMethod.GET)
@@ -79,13 +78,13 @@ public class LoginController {
     @RequestMapping(value = ApplicationUrl.LOGIN, method = RequestMethod.POST)
     public String connexionPost(HttpServletRequest req, ModelMap modelMap) {
         String email = req.getParameter("email");
-        String motDePasse = req.getParameter("motDePasse");
+        String motDePasse = req.getParameter("password");
         try {
             Utilisateur utilisateur = connexionService.connecterUtilisateur(email, motDePasse);
             HttpSession session = req.getSession();
-            session.setAttribute("email", utilisateur.getEmail());
+            session.setAttribute("email", utilisateur.getMail());
             session.setAttribute("id", utilisateur.getId());
-            return REDIRECT + ApplicationUrl.INDEX;
+            return REDIRECT + ApplicationUrl.INDEX_CLIENT;
         } catch (WorkshopException e) {
             modelMap.put("errors", e.getMessages());
             return PageMapping.LOGIN;

@@ -16,26 +16,23 @@ public class InscriptionServiceImpl implements InscriptionService {
         this.utilisateurDao = utilisateurDao;
     }
 
-    public void inscrireUtilisateur(String email, String motDePasse, String confirmationMotDePasse, boolean approbation) throws WorkshopException {
+    public void inscrireUtilisateur(String email, String motDePasse, String confirmationMotDePasse) throws WorkshopException {
 
         WorkshopException ex = new WorkshopException();
         if (email == null || email.equals("")) {
-            ex.addMessage("email", "Merci de saisir votre adresse e-mail.");
+            ex.addMessage("login-error", "Merci de saisir votre adresse e-mail.");
         } else if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-            ex.addMessage("email", "Merci de saisir une adresse mail valide.");
+            ex.addMessage("login-error", "Merci de saisir une adresse mail valide.");
         }
         if (emailDejaExistant(email)) {
-            ex.addMessage("email", "Un compte est déjà associé à cette adresse e-mail");
+            ex.addMessage("login-error", "Un compte est déjà associé à cette adresse e-mail");
         }
 
         if (motDePasse == null || motDePasse.length() < 8) {
-            ex.addMessage("motDePasse", "Le mot de passe doit contenir au moins 8 caractères.");
+            ex.addMessage("login-error", "Le mot de passe doit contenir au moins 8 caractères.");
         }
         if (motDePasse != null && !motDePasse.equals(confirmationMotDePasse)) {
-            ex.addMessage("confirmationMotDePasse", "Les deux mots de passe ne sont pas identiques.");
-        }
-        if (!approbation) {
-            ex.addMessage("approbation", "Vous devez accepter les conditions.");
+            ex.addMessage("login-error", "Les deux mots de passe ne sont pas identiques.");
         }
         if (ex.mustBeThrown()) {
             throw ex;
@@ -45,6 +42,6 @@ public class InscriptionServiceImpl implements InscriptionService {
     }
 
     private boolean emailDejaExistant(String email) {
-        return utilisateurDao.countByEmail(email) > 0;
+        return utilisateurDao.countByMail(email) > 0;
     }
 }

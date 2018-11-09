@@ -45,9 +45,8 @@ public class AssuranceController {
         String email = req.getParameter("email");
         String motDePasse = req.getParameter("motDePasse");
         String confirmationMotDePasse = req.getParameter("confirmationMotDePasse");
-        boolean approbation = Boolean.valueOf(req.getParameter("approbation"));
         try {
-            inscriptionService.inscrireUtilisateur(email, motDePasse, confirmationMotDePasse, approbation);
+            inscriptionService.inscrireUtilisateur(email, motDePasse, confirmationMotDePasse);
             Utilisateur utilisateur = connexionService.connecterUtilisateur(email, motDePasse);
             HttpSession session = req.getSession();
             session.setAttribute("email", utilisateur.getEmail());

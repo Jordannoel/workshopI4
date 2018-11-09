@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+.deconnexionButton {
+    margin-left: 990px;
+}
+
 .choice {
     display: -ms-flexbox;
     display: -webkit-box;

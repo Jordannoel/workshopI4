@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
@@ -13,18 +14,23 @@ import javax.persistence.Id;
 public class Assurance {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String dateDebut;
 
     private String dateFin;
 
-    public int getId() {
+    public Assurance(String dateDebut, String dateFin){
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -5,26 +5,32 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import java.util.Date;
 
 
 @Entity(name = "evenement")
 public class Evenement {
 
     @Id
-    @GeneratedValue
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String nom;
 
-    private String date;
+    private Date date;
 
-    public int getId() {
+    public Evenement(String nom, Date date){
+        this.nom = nom;
+        this.date = date;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -36,11 +42,11 @@ public class Evenement {
         this.nom = nom;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }

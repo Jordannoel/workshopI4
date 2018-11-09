@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-
-
 @Entity(name = "utilisateur")
 public class Utilisateur {
 
@@ -17,13 +15,13 @@ public class Utilisateur {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String email;
+    private String mail;
 
-    private String password;
+    private String mdp;
 
-    public Utilisateur(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public Utilisateur(String mail, String mdp) {
+        this.mail = mail;
+        this.mdp = mdp;
     }
 
     public Utilisateur() {
@@ -37,19 +35,19 @@ public class Utilisateur {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMail() {
+        return mail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMdp() {
+        return mdp;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
 }

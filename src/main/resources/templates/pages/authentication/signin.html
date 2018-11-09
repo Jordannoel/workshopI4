@@ -13,7 +13,7 @@
         <img src="images/logo.png" alt="Logo" width="150px">
     </a>
     <div class="container signin rounded shadow-lg p-4 mb-4">
-        <form class="form-signin" method="post" accept-charset="utf-8" autocomplete="off">
+        <form class="form-signin" method="post" accept-charset="utf-8">
             <h1 class="h3 mb-3 font-weight-normal">Inscription</h1>
             <div>
                 <input type="text" name="email" id="email" class="form-control" placeholder="Email d'utilisateur" required autofocus>
@@ -27,8 +27,7 @@
             <div class="error-message">
                 <span th:if="${errors != null}" th:text="${errors.get('login-error')}"></span>
             </div>
-            <!--<button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>-->
-            <a class="btn btn-lg btn-success btn-block" th:href="@{/login}"> Valider </a>
+            <button class="btn btn-lg btn-success btn-block" type="submit">Valider</button>
             <br/>
         </form>
     </div>
